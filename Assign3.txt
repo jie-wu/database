@@ -1,0 +1,409 @@
+I take screen shot for all the output together.
+1.	From the confusion matrix, identify which sense is the hardest one for each model to estimate. 
+ bag-of-words:
+Hard: HARD1
+Interest: interest_6
+Serve: SERVE10
+
+collocation:
+Hard: HARD3
+Interest: interest_6
+Serve: SERVE2
+
+2.	Look in for errors.txt examples (Identify the example number and sentence) where the hardest word sense is the correct label. 
+ bag-of-words:
+Hard: HARD3
+Interest: interest_6
+Serve: SERVE2
+
+collocation:
+Hard: HARD3
+Interest: interest_6
+Serve: SERVE2
+
+3.	An error analysis (confusion matrix and errors.txt) for the wsd_context_features Naïve Bayes Classifiers for each target word for distance = 5.
+o Compare the accuracy of collocations with the earlier error analysis done for distance = 3
+The accuracy for distance of 3 is bigger than the distance of 5 for three of those.
+
+4.	An error analysis (confusion matrix and errors.txt) for the wsd_word_features Naïve Bayes Classifiers for each target word over 100 most frequent words (number = 100).
+o Compare the accuracy of bag-of-words with the earlier error analysis done for number = 300
+
+The accuracy for number of 300 is bigger than the number of 100 for hard.pos and serve.pos, but the interest.pos is opposite.
+
+======================================
+***************************** For hard.pos *****************************
+['HARD1', 'HARD2', 'HARD3']
+
+----- Baselines -----
+[('HARD1', 3455), ('HARD2', 502), ('HARD3', 376)]
+HARD1 0.797369028386799
+
+----- Random baselines -----
+HARD3 0.08677590583891069 
+
+
+----- Baselines -----
+Reading data...
+ Senses: HARD1 HARD2 HARD3
+Training classifier...
+Testing classifier...
+Accuracy: 0.8593
+Writing errors to errors.txt
+      |   H   H   H |
+      |   A   A   A |
+      |   R   R   R |
+      |   D   D   D |
+      |   1   2   3 |
+------+-------------+
+HARD1 |<676> 21   5 |
+HARD2 |  44 <44>  . |
+HARD3 |  47   5 <25>|
+------+-------------+
+(row = reference; col = test)
+
+
+----- Bag of words number = 300 VS 100-----
+Reading data...
+ Senses: HARD1 HARD2 HARD3
+Training classifier...
+Testing classifier...
+Accuracy: 0.8558
+Writing errors to errors.txt
+      |   H   H   H |
+      |   A   A   A |
+      |   R   R   R |
+      |   D   D   D |
+      |   1   2   3 |
+------+-------------+
+HARD1 |<685> 15   2 |
+HARD2 |  43 <45>  . |
+HARD3 |  60   5 <12>|
+------+-------------+
+(row = reference; col = test)
+
+Reading data...
+ Senses: HARD1 HARD2 HARD3
+Training classifier...
+Testing classifier...
+Accuracy: 0.8385
+Writing errors to errors.txt
+      |   H   H   H |
+      |   A   A   A |
+      |   R   R   R |
+      |   D   D   D |
+      |   1   2   3 |
+------+-------------+
+HARD1 |<691> 11   . |
+HARD2 |  52 <35>  1 |
+HARD3 |  75   1  <1>|
+------+-------------+
+(row = reference; col = test)
+
+
+----- Collocation distance = 3 VS 5-----
+Reading data...
+ Senses: HARD1 HARD2 HARD3
+Training classifier...
+Testing classifier...
+Accuracy: 0.8950
+Writing errors to errors.txt
+      |   H   H   H |
+      |   A   A   A |
+      |   R   R   R |
+      |   D   D   D |
+      |   1   2   3 |
+------+-------------+
+HARD1 |<643> 39  20 |
+HARD2 |   6 <73>  9 |
+HARD3 |   5  12 <60>|
+------+-------------+
+(row = reference; col = test)
+
+Reading data...
+ Senses: HARD1 HARD2 HARD3
+Training classifier...
+Testing classifier...
+Accuracy: 0.8731
+Writing errors to errors.txt
+      |   H   H   H |
+      |   A   A   A |
+      |   R   R   R |
+      |   D   D   D |
+      |   1   2   3 |
+------+-------------+
+HARD1 |<643> 39  20 |
+HARD2 |   6 <73>  9 |
+HARD3 |   5  12 <60>|
+------+-------------+
+(row = reference; col = test)
+
+
+***************************** For interest.pos *****************************
+['interest_2', 'interest_5', 'interest_6', 'interest_4', 'interest_1', 'interest_3']
+
+----- Baselines -----
+[('interest_6', 1252), ('interest_5', 500), ('interest_1', 361), ('interest_4', 178), ('interest_3', 66), ('interest_2', 11)]
+interest_6 0.5287162162162162
+
+----- Random baselines -----
+interest_1 0.15244932432432431 
+
+
+----- Baselines -----
+Reading data...
+ Senses: interest_2 interest_5 interest_6 interest_4 interest_1 interest_3
+Training classifier...
+Testing classifier...
+Accuracy: 0.5443
+Writing errors to errors.txt
+           |   i   i   i   i   i   i |
+           |   n   n   n   n   n   n |
+           |   t   t   t   t   t   t |
+           |   e   e   e   e   e   e |
+           |   r   r   r   r   r   r |
+           |   e   e   e   e   e   e |
+           |   s   s   s   s   s   s |
+           |   t   t   t   t   t   t |
+           |   _   _   _   _   _   _ |
+           |   1   2   3   4   5   6 |
+-----------+-------------------------+
+interest_1 | <11> 30   1   4   5  27 |
+interest_2 |   .  <1>  .   .   .   2 |
+interest_3 |   .   1  <5>  4   3   2 |
+interest_4 |   .  12   1  <8>  8   5 |
+interest_5 |   .  27   3   2 <53>  4 |
+interest_6 |   .  71   .   .   4<180>|
+-----------+-------------------------+
+(row = reference; col = test)
+
+
+----- Bag of words number = 300 VS 100-----
+Reading data...
+ Senses: interest_2 interest_5 interest_6 interest_4 interest_1 interest_3
+Training classifier...
+Testing classifier...
+Accuracy: 0.5506
+Writing errors to errors.txt
+           |   i   i   i   i   i   i |
+           |   n   n   n   n   n   n |
+           |   t   t   t   t   t   t |
+           |   e   e   e   e   e   e |
+           |   r   r   r   r   r   r |
+           |   e   e   e   e   e   e |
+           |   s   s   s   s   s   s |
+           |   t   t   t   t   t   t |
+           |   _   _   _   _   _   _ |
+           |   1   2   3   4   5   6 |
+-----------+-------------------------+
+interest_1 | <12> 40   1   8   4  13 |
+interest_2 |   .  <2>  .   .   .   1 |
+interest_3 |   .   2  <4>  9   .   . |
+interest_4 |   1  12   . <18>  1   2 |
+interest_5 |   1  22   2   3 <59>  2 |
+interest_6 |   1  82   .   1   5<166>|
+-----------+-------------------------+
+(row = reference; col = test)
+
+Reading data...
+ Senses: interest_2 interest_5 interest_6 interest_4 interest_1 interest_3
+Training classifier...
+Testing classifier...
+Accuracy: 0.7194
+Writing errors to errors.txt
+           |   i   i   i   i   i   i |
+           |   n   n   n   n   n   n |
+           |   t   t   t   t   t   t |
+           |   e   e   e   e   e   e |
+           |   r   r   r   r   r   r |
+           |   e   e   e   e   e   e |
+           |   s   s   s   s   s   s |
+           |   t   t   t   t   t   t |
+           |   _   _   _   _   _   _ |
+           |   1   2   3   4   5   6 |
+-----------+-------------------------+
+interest_1 | <11>  3   1  10  16  37 |
+interest_2 |   .  <.>  .   .   1   2 |
+interest_3 |   .   .  <3> 12   .   . |
+interest_4 |   .   1   . <28>  2   3 |
+interest_5 |   .   2   .   8 <71>  8 |
+interest_6 |   1   4   .   4  18<228>|
+-----------+-------------------------+
+(row = reference; col = test)
+
+
+----- Collocation distance = 3 VS 5-----
+Reading data...
+ Senses: interest_2 interest_5 interest_6 interest_4 interest_1 interest_3
+Training classifier...
+Testing classifier...
+Accuracy: 0.4283
+Writing errors to errors.txt
+           |   i   i   i   i   i   i |
+           |   n   n   n   n   n   n |
+           |   t   t   t   t   t   t |
+           |   e   e   e   e   e   e |
+           |   r   r   r   r   r   r |
+           |   e   e   e   e   e   e |
+           |   s   s   s   s   s   s |
+           |   t   t   t   t   t   t |
+           |   _   _   _   _   _   _ |
+           |   1   2   3   4   5   6 |
+-----------+-------------------------+
+interest_1 | <33> 38   1   .   6   . |
+interest_2 |   .  <3>  .   .   .   . |
+interest_3 |   .   6  <7>  2   .   . |
+interest_4 |   .  19   . <12>  3   . |
+interest_5 |   1  41   1   3 <43>  . |
+interest_6 |   . 147   1   1   1<105>|
+-----------+-------------------------+
+(row = reference; col = test)
+
+Reading data...
+ Senses: interest_2 interest_5 interest_6 interest_4 interest_1 interest_3
+Training classifier...
+Testing classifier...
+Accuracy: 0.1561
+Writing errors to errors.txt
+           |   i   i   i   i   i   i |
+           |   n   n   n   n   n   n |
+           |   t   t   t   t   t   t |
+           |   e   e   e   e   e   e |
+           |   r   r   r   r   r   r |
+           |   e   e   e   e   e   e |
+           |   s   s   s   s   s   s |
+           |   t   t   t   t   t   t |
+           |   _   _   _   _   _   _ |
+           |   1   2   3   4   5   6 |
+-----------+-------------------------+
+interest_1 | <33> 38   1   .   6   . |
+interest_2 |   .  <3>  .   .   .   . |
+interest_3 |   .   6  <7>  2   .   . |
+interest_4 |   .  19   . <12>  3   . |
+interest_5 |   1  41   1   3 <43>  . |
+interest_6 |   . 147   1   1   1<105>|
+-----------+-------------------------+
+(row = reference; col = test)
+
+
+***************************** For serve.pos *****************************
+['SERVE6', 'SERVE12', 'SERVE2', 'SERVE10']
+
+----- Baselines -----
+[('SERVE10', 1814), ('SERVE12', 1272), ('SERVE2', 853), ('SERVE6', 439)]
+SERVE10 0.4143444495203289
+
+----- Random baselines -----
+SERVE12 0.2905436272270443 
+
+
+----- Baselines -----
+Reading data...
+ Senses: SERVE6 SERVE12 SERVE2 SERVE10
+Training classifier...
+Testing classifier...
+Accuracy: 0.7386
+Writing errors to errors.txt
+        |   S   S         |
+        |   E   E   S   S |
+        |   R   R   E   E |
+        |   V   V   R   R |
+        |   E   E   V   V |
+        |   1   1   E   E |
+        |   0   2   2   6 |
+--------+-----------------+
+SERVE10 |<309> 39  19   4 |
+SERVE12 |   7<215> 10  15 |
+ SERVE2 |  33  57 <60> 19 |
+ SERVE6 |   4  15   7 <63>|
+--------+-----------------+
+(row = reference; col = test)
+
+
+----- Bag of words number = 300 VS 100-----
+Reading data...
+ Senses: SERVE6 SERVE12 SERVE2 SERVE10
+Training classifier...
+Testing classifier...
+Accuracy: 0.7009
+Writing errors to errors.txt
+        |   S   S         |
+        |   E   E   S   S |
+        |   R   R   E   E |
+        |   V   V   R   R |
+        |   E   E   V   V |
+        |   1   1   E   E |
+        |   0   2   2   6 |
+--------+-----------------+
+SERVE10 |<237> 41  84   9 |
+SERVE12 |   .<213> 19  15 |
+ SERVE2 |   1  52<108>  8 |
+ SERVE6 |   .  14  19 <56>|
+--------+-----------------+
+(row = reference; col = test)
+
+Reading data...
+ Senses: SERVE6 SERVE12 SERVE2 SERVE10
+Training classifier...
+Testing classifier...
+Accuracy: 0.5993
+Writing errors to errors.txt
+        |   S   S         |
+        |   E   E   S   S |
+        |   R   R   E   E |
+        |   V   V   R   R |
+        |   E   E   V   V |
+        |   1   1   E   E |
+        |   0   2   2   6 |
+--------+-----------------+
+SERVE10 |<175> 89  98   9 |
+SERVE12 |   1<218> 17  11 |
+ SERVE2 |   1  66 <97>  5 |
+ SERVE6 |   .  33  21 <35>|
+--------+-----------------+
+(row = reference; col = test)
+
+
+----- Collocation distance = 3 VS 5-----
+Reading data...
+ Senses: SERVE6 SERVE12 SERVE2 SERVE10
+Training classifier...
+Testing classifier...
+Accuracy: 0.8345
+Writing errors to errors.txt
+        |   S   S         |
+        |   E   E   S   S |
+        |   R   R   E   E |
+        |   V   V   R   R |
+        |   E   E   V   V |
+        |   1   1   E   E |
+        |   0   2   2   6 |
+--------+-----------------+
+SERVE10 |<311> 19   9  32 |
+SERVE12 |  11<213> 19   4 |
+ SERVE2 |   2  28<134>  5 |
+ SERVE6 |   4   4   8 <73>|
+--------+-----------------+
+(row = reference; col = test)
+
+Reading data...
+ Senses: SERVE6 SERVE12 SERVE2 SERVE10
+Training classifier...
+Testing classifier...
+Accuracy: 0.8333
+Writing errors to errors.txt
+        |   S   S         |
+        |   E   E   S   S |
+        |   R   R   E   E |
+        |   V   V   R   R |
+        |   E   E   V   V |
+        |   1   1   E   E |
+        |   0   2   2   6 |
+--------+-----------------+
+SERVE10 |<311> 19   9  32 |
+SERVE12 |  11<213> 19   4 |
+ SERVE2 |   2  28<134>  5 |
+ SERVE6 |   4   4   8 <73>|
+--------+-----------------+
+(row = reference; col = test)
+
+>>> 
