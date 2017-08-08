@@ -1,3 +1,8 @@
+
+
+
+
+
 I take screen shot for all the output together.
 1.	From the confusion matrix, identify which sense is the hardest one for each model to estimate. 
  bag-of-words:
